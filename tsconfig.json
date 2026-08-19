@@ -16,6 +16,23 @@
     "plugins": [
       {
         "name": "next"
+      },
+      {
+        "name": "@styled/typescript-styled-plugin",
+        "lint": {
+          "unknownAtRules": "ignore",
+          "validProperties":
+            [
+              "corner-shape",
+              "anchor-name",
+              "position-anchor",
+              "@container",
+              "container-type",
+              "container-name",
+              "@theme"
+            ]
+
+        },
       }
     ],
     "paths": {
