@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import NavBar from "./NavBar";
+import { NavBar } from "@components/index";
 
 jest.mock("next/link", () => ({
   __esModule: true,
@@ -17,7 +17,7 @@ jest.mock("next/image", () => ({
   default: ({ alt, ...props }: any) => <img alt={alt} {...props} />,
 }));
 
-jest.mock("../../../public/nav_logo.png", () => "/nav_logo.png");
+jest.mock("@assets/nav_logo.png", () => "/nav_logo.png");
 
 describe("NavBar", () => {
   it("renders all navigation links with the expected routes", () => {

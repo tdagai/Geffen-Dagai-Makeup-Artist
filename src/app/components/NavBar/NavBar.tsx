@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link";
-import NavLogo from "../../../public/nav_logo.png";
+import NavLogo from "@assets/nav_logo.png";
 import Image from "next/image";
 
 const NavBar = () => {
