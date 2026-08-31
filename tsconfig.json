@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -21,22 +25,28 @@
         "name": "@styled/typescript-styled-plugin",
         "lint": {
           "unknownAtRules": "ignore",
-          "validProperties":
-            [
-              "corner-shape",
-              "anchor-name",
-              "position-anchor",
-              "@container",
-              "container-type",
-              "container-name",
-              "@theme"
-            ]
-
+          "validProperties": [
+            "corner-shape",
+            "anchor-name",
+            "position-anchor",
+            "@container",
+            "container-type",
+            "container-name",
+            "@theme",
+          ]
         },
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@components/*": [
+        "./src/app/components/*"
+      ],
+      "@assets/*": [
+        "./src/app/assets/*"
+      ],
     }
   },
   "include": [
@@ -47,5 +57,7 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }
