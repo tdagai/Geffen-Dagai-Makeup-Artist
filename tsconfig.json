@@ -32,7 +32,7 @@
             "@container",
             "container-type",
             "container-name",
-            "@theme"
+            "@theme",
           ]
         },
       }
