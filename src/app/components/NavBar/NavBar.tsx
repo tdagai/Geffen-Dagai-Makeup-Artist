@@ -73,7 +73,7 @@ const ResponsiveNav = () => {
           />
         </button>
       </nav>
-      <ul className={`text-xl border-primary border-b-4 w-full absolute top-[100px] left-0 ${navOpen ? "-translate-y-full" : ""} transition-transform duration-300 ease-in-out bg-secondary flex flex-row z-15 font-instrument justify-evenly py-[1rem] md:hidden`}>
+      <ul className={`text-xl border-primary border-b-4 w-full absolute top-0 left-0 ${navOpen ? "translate-y-[100px]" : "translate-y-0"} transition-all duration-300 ease-in-out bg-secondary flex flex-row z-15 font-instrument justify-evenly py-[1rem] md:hidden`}>
         <li>
           <Link
             href="/portfolio"
