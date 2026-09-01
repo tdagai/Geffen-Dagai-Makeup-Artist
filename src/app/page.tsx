@@ -1,8 +1,11 @@
-// import Image from "next/image";
+'use client'
+
+import { HomepageHero } from "./components";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center font-sans bg-background-green">
+    <div className="bg-background-green flex flex-1 flex-col items-center gap-y-24 font-sans">
+      <HomepageHero />
     </div>
   );
 }
