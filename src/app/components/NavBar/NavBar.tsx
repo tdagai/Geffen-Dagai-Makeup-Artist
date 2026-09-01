@@ -10,7 +10,7 @@ const ResponsiveNav = () => {
 
   return (
     <>
-      <nav className="bg-secondary h-25 md:h-33.5 border-primary sticky z-20 flex w-full items-center justify-between border-b-4 text-2xl tracking-wide md:justify-center">
+      <nav className="bg-secondary border-primary sticky z-20 flex h-[100px] w-full items-center justify-between border-b-4 text-2xl tracking-wide md:h-[134px] md:justify-center">
         <ul className="font-instrument z-20 hidden w-full justify-evenly md:flex">
           <li>
             <Link
@@ -31,7 +31,7 @@ const ResponsiveNav = () => {
             </Link>
           </li>
         </ul>
-        <Link href="/" as="/" className="w-65 z-20 md:w-auto">
+        <Link href="/" as="/" className="z-20 w-[260px] md:w-auto">
           <Image
             src={NavLogo}
             alt="website nav logo"

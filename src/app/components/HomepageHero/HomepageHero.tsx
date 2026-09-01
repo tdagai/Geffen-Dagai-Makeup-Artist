@@ -3,11 +3,12 @@
 import Image from "next/image";
 import StyledButton from "../StyledButton/StyledButton";
 import HeroImage from "@assets/homepage/hero.jpg";
+import GenericGrid from "../UI/GenericGrid";
 
 const HomepageHero = () => {
   return (
-    <section className="grid w-full gap-4 sm:grid-cols-4 md:mt-24 md:grid-cols-12">
-      <div className="mt-8 flex flex-col items-center justify-evenly gap-8 px-8 text-center sm:col-start-1 sm:col-end-5 sm:row-start-2 md:col-start-2 md:col-end-7 md:row-start-1 md:mt-0 md:items-start md:px-0 md:text-start">
+    <GenericGrid as="section" className="md:mt-24">
+      <div className="mt-8 flex flex-col items-center justify-center gap-8 px-8 text-center sm:col-start-1 sm:col-end-5 sm:row-start-2 md:col-start-2 md:col-end-7 md:row-start-1 md:mt-0 md:items-start md:px-0 md:text-start">
         <h1 className="text-primary font-young">
           A Versatile Artist For All Your Makeup Needs
         </h1>
@@ -24,7 +25,7 @@ const HomepageHero = () => {
           className="shadow-big rounded-b-2xl md:rounded-2xl"
         />
       </div>
-    </section>
+    </GenericGrid>
   )
 }
 
