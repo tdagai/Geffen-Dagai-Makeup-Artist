@@ -10,8 +10,8 @@ const ResponsiveNav = () => {
 
   return (
     <>
-      <nav className="bg-secondary h-[100px] md:h-[134px] w-full sticky flex items-center justify-between md:justify-center text-2xl tracking-wide border-primary border-b-4 z-20">
-        <ul className="w-full hidden md:flex font-instrument justify-evenly z-20">
+      <nav className="bg-secondary h-25 md:h-33.5 border-primary sticky z-20 flex w-full items-center justify-between border-b-4 text-2xl tracking-wide md:justify-center">
+        <ul className="font-instrument z-20 hidden w-full justify-evenly md:flex">
           <li>
             <Link
               href="/portfolio"
@@ -31,7 +31,7 @@ const ResponsiveNav = () => {
             </Link>
           </li>
         </ul>
-        <Link href="/" as="/" className="w-[260px] md:w-auto z-20">
+        <Link href="/" as="/" className="w-65 z-20 md:w-auto">
           <Image
             src={NavLogo}
             alt="website nav logo"
@@ -39,7 +39,7 @@ const ResponsiveNav = () => {
             className="transition duration-150 ease-in-out hover:scale-110"
           />
         </Link>
-        <ul className="w-full hidden md:flex font-instrument justify-evenly z-20">
+        <ul className="font-instrument z-20 hidden w-full justify-evenly md:flex">
           <li>
             <Link
               href="/about"
