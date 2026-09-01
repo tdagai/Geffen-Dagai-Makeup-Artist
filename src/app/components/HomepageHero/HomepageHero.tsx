@@ -7,7 +7,7 @@ import HeroImage from "@assets/homepage/hero.jpg";
 const HomepageHero = () => {
   return (
     <section className="grid w-full gap-4 sm:grid-cols-4 md:mt-24 md:grid-cols-12">
-      <div className="flex flex-col justify-evenly gap-8 sm:col-start-1 sm:col-end-5 sm:row-start-2 md:col-start-2 md:col-end-7 md:row-start-1">
+      <div className="mt-8 flex flex-col items-center justify-evenly gap-8 px-8 text-center sm:col-start-1 sm:col-end-5 sm:row-start-2 md:col-start-2 md:col-end-7 md:row-start-1 md:mt-0 md:items-start md:px-0 md:text-start">
         <h1 className="text-primary font-young">
           A Versatile Artist For All Your Makeup Needs
         </h1>
@@ -20,6 +20,7 @@ const HomepageHero = () => {
         <Image
           src={HeroImage}
           alt="a picture of Geffen on a lit green background"
+          loading="eager"
           className="shadow-big rounded-b-2xl md:rounded-2xl"
         />
       </div>
