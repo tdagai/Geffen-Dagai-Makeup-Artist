@@ -4,6 +4,7 @@ import Image from "next/image";
 import StyledButton from "../StyledButton/StyledButton";
 import HeroImage from "@assets/homepage/hero.jpg";
 import GenericGrid from "../UI/GenericGrid";
+import Link from "next/link";
 
 const HomepageHero = () => {
   return (
@@ -15,7 +16,9 @@ const HomepageHero = () => {
         <h3 className="font-instrument tracking-[3%]">
           Done up, dirty, personal, or character, I can make it all come together
         </h3>
-        <StyledButton>{"Reach Out!"}</StyledButton>
+        <Link href="/contact">
+          <StyledButton>{"Reach Out!"}</StyledButton>
+        </Link>
       </div>
       <div className="row-start-1 sm:col-start-1 sm:col-end-5 sm:w-full md:col-start-8 md:col-end-12 md:w-auto">
         <Image
