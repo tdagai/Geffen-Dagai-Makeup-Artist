@@ -45,10 +45,10 @@ const PortfolioSection = () => {
     <GenericGrid as="section">
       <div className="bg-secondary shadow-big flex flex-col items-center gap-6 md:col-span-10 md:col-start-2 md:rounded-2xl md:p-10">
         <h2 className="font-young text-primary text-center">My Work Speaks For Itself</h2>
-        <div className="flex flex-row justify-evenly gap-4">
+        <div className="flex w-full flex-row justify-evenly gap-4">
           {itemsList.map(({ text, imageSrc, alt, href }) => {
             return (
-              <div key={text}>
+              <Link href={href} key={text}>
                 <h3 className="font-young text-primary text-center underline">{text}</h3>
                 <div className="max-w-75 max-h-100 overflow-hidden rounded-2xl border border-black">
                   <Image
@@ -57,7 +57,7 @@ const PortfolioSection = () => {
                     className=""
                   />
                 </div>
-              </div>
+              </Link>
             )
           })}
         </div>

@@ -17,7 +17,7 @@ const HomepageHero = () => {
           Done up, dirty, personal, or character, I can make it all come together
         </h3>
         <Link href="/contact">
-          <StyledButton>{"Reach Out!"}</StyledButton>
+          <StyledButton type="button" name="Reach Out!">{"Reach Out!"}</StyledButton>
         </Link>
       </div>
       <div className="row-start-1 sm:col-start-1 sm:col-end-5 sm:w-full md:col-start-8 md:col-end-12 md:w-auto">
