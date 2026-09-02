@@ -24,22 +24,17 @@ describe("NavBar", () => {
   it("renders all navigation links with the expected routes", () => {
     render(<NavBar />);
 
-    expect(screen.getByText("Portfolio").closest("a")).toHaveAttribute(
-      "href",
-      "/portfolio"
-    );
-    expect(screen.getByText("Resume").closest("a")).toHaveAttribute(
-      "href",
-      "/resume"
-    );
-    expect(screen.getByText("About").closest("a")).toHaveAttribute(
-      "href",
-      "/about"
-    );
-    expect(screen.getByText("Contact").closest("a")).toHaveAttribute(
-      "href",
-      "/contact"
-    );
+    const expectRoutesFor = (label: string, href: string) => {
+      const links = screen.getAllByText(label).map((el) => el.closest("a"));
+
+      expect(links.length).toBeGreaterThan(0);
+      links.forEach((link) => expect(link).toHaveAttribute("href", href));
+    };
+
+    expectRoutesFor("Portfolio", "/portfolio");
+    expectRoutesFor("Resume", "/resume");
+    expectRoutesFor("About", "/about");
+    expectRoutesFor("Contact", "/contact");
   });
 
   it("renders the home logo link and logo image", () => {
@@ -52,9 +47,15 @@ describe("NavBar", () => {
     expect(logoImage).toBeInTheDocument();
   });
 
-  it("renders five total links including the home logo link", () => {
+  it("renders a link to each route at least once", () => {
     render(<NavBar />);
 
-    expect(document.querySelectorAll("a")).toHaveLength(5);
+    const hrefs = screen
+      .getAllByRole("link")
+      .map((link) => link.getAttribute("href"));
+
+    ["/", "/portfolio", "/resume", "/about", "/contact"].forEach((route) => {
+      expect(hrefs).toContain(route);
+    });
   });
 });

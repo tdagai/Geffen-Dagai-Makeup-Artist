@@ -10,7 +10,7 @@ const ResponsiveNav = () => {
 
   return (
     <>
-      <nav className="bg-secondary h-25 md:h-33.5 border-primary sticky z-20 flex w-full items-center justify-between border-b-4 text-2xl tracking-wide md:justify-center">
+      <nav className="bg-secondary border-primary h-25 md:h-33.5 sticky z-20 flex w-full items-center justify-between border-b-4 text-2xl tracking-wide md:justify-center">
         <ul className="font-instrument z-20 hidden w-full justify-evenly md:flex">
           <li>
             <Link
@@ -69,11 +69,11 @@ const ResponsiveNav = () => {
             loading="eager"
             unoptimized
             height={32}
-            className="mr-[1rem]"
+            className="mr-4"
           />
         </button>
       </nav>
-      <ul className={`text-xl border-primary border-b-4 w-full absolute top-0 left-0 ${navOpen ? "translate-y-[100px]" : "translate-y-0"} transition-all duration-300 ease-in-out bg-secondary flex flex-row z-15 font-instrument justify-evenly py-[1rem] md:hidden`}>
+      <ul className={`text-xl border-primary border-b-4 w-full absolute top-0 left-0 ${navOpen ? "translate-y-25" : "translate-y-0"} transition-all duration-300 ease-in-out bg-secondary flex flex-row z-15 font-instrument justify-evenly py-4 md:hidden`}>
         <li>
           <Link
             href="/portfolio"

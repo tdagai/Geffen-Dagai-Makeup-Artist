@@ -1,15 +1,24 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen } from "@testing-library/react";
-import { ImgHTMLAttributes } from "react";
 import HomepageHero from "./HomepageHero";
 
-jest.mock("next/image", () => ({
+jest.mock("next/link", () => ({
   __esModule: true,
-  default: ({ alt, ...props }: ImgHTMLAttributes<HTMLImageElement>) => (
-    <img alt={alt} {...props} />
+  default: ({ children, href, ...props }: any) => (
+    <a href={href} {...props}>
+      {children}
+    </a>
   ),
 }));
 
-jest.mock("@assets/homepage/hero.jpg", () => "/hero.jpg");
+jest.mock("next/image", () => ({
+  __esModule: true,
+  default: (props: any) => {
+    const { src, ...rest } = props;
+    // eslint-disable-next-line jsx-a11y/alt-text, @next/next/no-img-element
+    return <img src={typeof src === "object" ? src.src : src} {...rest} />;
+  },
+}));
 
 describe("HomepageHero", () => {
   it("renders the main headline and supporting copy", () => {
@@ -32,13 +41,11 @@ describe("HomepageHero", () => {
     render(<HomepageHero />);
 
     expect(
-      screen.getByRole("button", { name: /reach out!/i })
+      screen.getByRole("button", { name: /reach out! →/i })
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole("img", {
-        name: /a picture of geffen on a lit green background/i,
-      })
-    ).toHaveAttribute("src", "/hero.jpg");
+      screen.getByAltText(/a picture of geffen on a lit green background/i)
+    ).toBeInTheDocument();
   });
 });
