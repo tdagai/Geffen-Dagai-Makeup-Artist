@@ -43,9 +43,9 @@ const PortfolioSection = () => {
 
   return (
     <GenericGrid as="section">
-      <div className="bg-secondary shadow-big flex flex-col items-center gap-6 md:col-span-10 md:col-start-2 md:rounded-2xl md:p-10">
+      <div className="bg-secondary shadow-big col-span-4 flex flex-col items-center gap-4 rounded-2xl p-8 md:col-span-10 md:col-start-2 md:gap-6 md:p-10">
         <h2 className="font-young text-primary text-center">My Work Speaks For Itself</h2>
-        <div className="flex w-full flex-row justify-evenly gap-4">
+        <div className="flex w-full flex-col-reverse items-center justify-evenly gap-4 md:flex-row">
           {itemsList.map(({ text, imageSrc, alt, href }) => {
             return (
               <Link href={href} key={text}>
@@ -61,9 +61,9 @@ const PortfolioSection = () => {
             )
           })}
         </div>
-        <Link href="/portfolio">
+        <Link href="/portfolio" className="mt-8 md:mt-10">
           <StyledButton>
-            See My Portfolio Here
+            See My Portfolio Here →
           </StyledButton>
         </Link>
       </div>

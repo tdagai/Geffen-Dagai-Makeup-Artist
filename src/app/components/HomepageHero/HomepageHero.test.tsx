@@ -41,7 +41,7 @@ describe("HomepageHero", () => {
     render(<HomepageHero />);
 
     expect(
-      screen.getByRole("button", { name: /reach out!/i })
+      screen.getByRole("button", { name: /reach out! →/i })
     ).toBeInTheDocument();
 
     expect(
