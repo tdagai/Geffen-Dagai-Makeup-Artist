@@ -4,3 +4,4 @@ export { default as StyledButton } from './StyledButton/StyledButton';
 export { default as PortfolioSection } from './PortfolioSection/PortfolioSection';
 export { default as GenericGrid } from './UI/GenericGrid';
 export { default as FullWidthImageSection } from './FullWidthImageSection/FullWidthImageSection';
+export { default as FaqSection } from './FaqSection/FaqSection';
