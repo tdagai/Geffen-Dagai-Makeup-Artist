@@ -9,7 +9,7 @@ type StyledButtonProps = {
 } & ComponentProps<"button">;
 
 const StyledButton = ({ children, className = "", href, ...props }: StyledButtonProps) => {
-  const baseClasses = `inline-flex items-center justify-center w-fit h-fit bg-primary font-young rounded-2xl px-8 py-6 text-xl border border-black text-white transition-all hover:bg-green-800 hover:cursor-pointer hover:shadow-small ${className}`;
+  const baseClasses = `inline-flex items-center justify-center w-fit h-fit bg-primary font-young rounded-2xl px-8 py-6 text-xl border border-black text-white transition-all hover:bg-green-800 hover:cursor-pointer hover:shadow-small active:bg-green-900 ${className}`;
 
   if (href) {
     return (
