@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import styled from "styled-components";
 
@@ -12,32 +12,23 @@ interface AccordionItemProps {
 
 type AccordionCompProps = React.HTMLAttributes<HTMLDivElement>;
 
-//  accordionitem component
 const AccordionItem = ({ question, answer, isOpen, onClick }: AccordionItemProps) => {
-  const contentRef = useRef<HTMLDivElement | null>(null);
-  const [height, setHeight] = useState<number>(0);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setHeight(isOpen ? contentRef.current.scrollHeight : 0);
-    }
-  }, [isOpen]);
-
   return (
     <Wrapper>
       <QuestionContainer
+        type="button"
         className={`font-young ${isOpen ? "active" : ""}`}
         onClick={onClick}
+        aria-expanded={isOpen}
       >
-        <p className="question-content">{question}</p>
-        <Arrow className={`${isOpen ? "active" : ""}`} />
+        <span className="question-content pointer-events-none">{question}</span>
+        <Arrow className={`shrink-0 pointer-events-none ${isOpen ? "active" : ""}`} />
       </QuestionContainer>
 
-      <AnswerContainer
-        ref={contentRef}
-        style={{ height: `${height}px` }}
-      >
-        <AnswerContent>{answer}</AnswerContent>
+      <AnswerContainer $isOpen={isOpen} aria-hidden={!isOpen}>
+        <AnswerInner>
+          <AnswerContent>{answer}</AnswerContent>
+        </AnswerInner>
       </AnswerContainer>
     </Wrapper>
   );
@@ -69,7 +60,7 @@ const Accordion = ({ className: classes = "" }: AccordionCompProps) => {
   ];
 
   return (
-    <Container className={`${classes}`}>
+    <Container className={classes}>
       {data.map((item, index) => (
         <AccordionItem
           key={index}
@@ -84,26 +75,48 @@ const Accordion = ({ className: classes = "" }: AccordionCompProps) => {
 };
 
 const Container = styled.div`
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
 `;
 
 const Wrapper = styled.div`
+  position: relative;
   width: 100%;
-  border-bottom: 1px solid black;
+  border-radius: 1rem;
+  box-shadow: var(--shadow-small);
+  border: 1px solid #000;
   overflow: hidden;
 `;
 
 const QuestionContainer = styled.button`
+  position: relative;
+  z-index: 2;
   width: 100%;
   text-align: left;
-  padding: 20px 10px;
+  padding: 1rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
   font-weight: 500;
-  font-size: 20px;
-  background: transparent;
+  font-size: 1.25rem;
+  background-color: var(--secondary);
+  color: var(--primary);
   border: none;
   cursor: pointer;
+
+  @media (min-width: 768px) {
+    padding: 1.5rem;
+    font-size: 28px;
+  }
+
+  &.active {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
 `;
 
 const Arrow = styled(RiArrowDropDownLine)`
@@ -115,16 +128,26 @@ const Arrow = styled(RiArrowDropDownLine)`
   }
 `;
 
-const AnswerContainer = styled.div`
+const AnswerContainer = styled.div<{ $isOpen: boolean }>`
+  display: grid;
+  grid-template-rows: ${(props) => (props.$isOpen ? "1fr" : "0fr")};
+  transition: grid-template-rows 0.35s ease-in-out;
+`;
+
+const AnswerInner = styled.div`
   overflow: hidden;
-  padding: 0 1rem;
-  transition: height 0.4s ease-in-out;
 `;
 
 const AnswerContent = styled.p`
-  padding-bottom: 1.25rem;
-  font-size: 18px;
+  padding: 1rem 1.25rem 1.5rem 1.25rem;
+  font-size: 16px;
+  line-height: 1.6;
   font-style: italic;
+
+  @media (min-width: 768px) {
+    padding: 1rem 1.5rem 2rem 1.5rem;
+    font-size: 18px;
+  }
 `;
 
 export default Accordion;

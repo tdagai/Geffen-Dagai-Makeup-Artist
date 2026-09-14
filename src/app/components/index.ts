@@ -5,3 +5,5 @@ export { default as PortfolioSection } from './PortfolioSection/PortfolioSection
 export { default as GenericGrid } from './UI/GenericGrid';
 export { default as FullWidthImageSection } from './FullWidthImageSection/FullWidthImageSection';
 export { default as FaqSection } from './FaqSection/FaqSection';
+export { default as Accordion } from './Accordion/Accordion';
+export { default as SimpleAccordion } from './Accordion/SimpleAccordion';

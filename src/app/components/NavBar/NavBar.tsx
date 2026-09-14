@@ -10,7 +10,7 @@ const ResponsiveNav = () => {
 
   return (
     <>
-      <nav className="bg-secondary border-primary h-25 md:h-33.5 sticky z-20 flex w-full items-center justify-between border-b-4 text-2xl tracking-wide md:justify-center">
+      <nav className="bg-secondary border-primary h-25 md:h-33.5 sticky top-0 z-30 flex w-full items-center justify-between border-b-4 text-2xl tracking-wide md:justify-center">
         <ul className="font-instrument z-20 hidden w-full justify-evenly md:flex">
           <li>
             <Link
@@ -60,8 +60,11 @@ const ResponsiveNav = () => {
           </li>
         </ul>
         <button
-          className="z-20 md:hidden"
-          onClick={() => setNavOpen(!navOpen)}
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded={navOpen}
+          className="z-30 flex cursor-pointer items-center justify-center p-3 md:hidden"
+          onClick={() => setNavOpen((prev) => !prev)}
         >
           <Image
             src={HamburgerMenu}
@@ -69,16 +72,23 @@ const ResponsiveNav = () => {
             loading="eager"
             unoptimized
             height={32}
-            className="mr-4"
+            className="pointer-events-none mr-2"
           />
         </button>
       </nav>
-      <ul className={`text-xl border-primary border-b-4 w-full absolute top-0 left-0 ${navOpen ? "translate-y-25" : "translate-y-0"} transition-all duration-300 ease-in-out bg-secondary flex flex-row z-15 font-instrument justify-evenly py-4 md:hidden`}>
+      <ul
+        className={`text-xl border-primary border-b-4 w-full absolute top-0 left-0 ${
+          navOpen
+            ? "translate-y-25 opacity-100 pointer-events-auto"
+            : "translate-y-0 opacity-0 pointer-events-none"
+        } transition-all duration-300 ease-in-out bg-secondary flex flex-row z-20 font-instrument justify-evenly py-4 md:hidden`}
+      >
         <li>
           <Link
             href="/portfolio"
             as="/portfolio"
             className="underline-slide-out"
+            onClick={() => setNavOpen(false)}
           >
             Portfolio
           </Link>
@@ -88,6 +98,7 @@ const ResponsiveNav = () => {
             href="/resume"
             as="/resume"
             className="underline-slide-out"
+            onClick={() => setNavOpen(false)}
           >
             Resume
           </Link>
@@ -97,6 +108,7 @@ const ResponsiveNav = () => {
             href="/about"
             as="/about"
             className="underline-slide-out"
+            onClick={() => setNavOpen(false)}
           >
             About
           </Link>
@@ -106,6 +118,7 @@ const ResponsiveNav = () => {
             href="/contact"
             as="/contact"
             className="underline-slide-out"
+            onClick={() => setNavOpen(false)}
           >
             Contact
           </Link>
@@ -113,12 +126,10 @@ const ResponsiveNav = () => {
       </ul>
     </>
   );
-}
-
+};
 
 const NavBar = () => {
-
-  return (<ResponsiveNav />);
-}
+  return <ResponsiveNav />;
+};
 
 export default NavBar;
