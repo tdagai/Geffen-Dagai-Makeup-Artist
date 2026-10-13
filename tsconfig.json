@@ -33,6 +33,7 @@
             "container-type",
             "container-name",
             "@theme",
+            "transition-behavior",
           ]
         },
       }
