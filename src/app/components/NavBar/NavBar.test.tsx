@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { NavBar } from "@components/index";
 
 jest.mock("next/link", () => ({
@@ -19,6 +19,7 @@ jest.mock("next/image", () => ({
 }));
 
 jest.mock("@assets/nav_logo.png", () => "/nav_logo.png");
+jest.mock("@assets/hamburgerMenu.svg", () => "/hamburgerMenu.svg");
 
 describe("NavBar", () => {
   it("renders all navigation links with the expected routes", () => {
@@ -57,5 +58,100 @@ describe("NavBar", () => {
     ["/", "/portfolio", "/resume", "/about", "/contact"].forEach((route) => {
       expect(hrefs).toContain(route);
     });
+  });
+
+  it("renders each nav link twice (desktop + mobile menus)", () => {
+    render(<NavBar />);
+
+    ["Portfolio", "Resume", "About", "Contact"].forEach((label) => {
+      expect(screen.getAllByText(label)).toHaveLength(2);
+    });
+  });
+
+  it("renders the hamburger menu toggle button with correct initial aria-expanded state", () => {
+    render(<NavBar />);
+
+    const toggleButton = screen.getByRole("button", {
+      name: /toggle navigation menu/i,
+    });
+
+    expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+  });
+
+  it("renders the hamburger menu icon image", () => {
+    render(<NavBar />);
+
+    const hamburgerImage = screen.getByAltText("hamburger menu icon");
+    expect(hamburgerImage).toBeInTheDocument();
+  });
+
+  it("toggles aria-expanded and mobile menu visibility classes when the hamburger button is clicked", () => {
+    const { container } = render(<NavBar />);
+
+    const toggleButton = screen.getByRole("button", {
+      name: /toggle navigation menu/i,
+    });
+    const mobileMenu = container.querySelector(
+      "ul.absolute"
+    ) as HTMLUListElement;
+
+    expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+    expect(mobileMenu).toHaveClass("opacity-0");
+    expect(mobileMenu).toHaveClass("pointer-events-none");
+    expect(mobileMenu).not.toHaveClass("opacity-100");
+
+    fireEvent.click(toggleButton);
+
+    expect(toggleButton).toHaveAttribute("aria-expanded", "true");
+    expect(mobileMenu).toHaveClass("translate-y-25");
+    expect(mobileMenu).toHaveClass("opacity-100");
+    expect(mobileMenu).toHaveClass("pointer-events-auto");
+    expect(mobileMenu).not.toHaveClass("opacity-0");
+
+    fireEvent.click(toggleButton);
+
+    expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+    expect(mobileMenu).toHaveClass("opacity-0");
+    expect(mobileMenu).toHaveClass("pointer-events-none");
+  });
+
+  it("closes the mobile menu when a mobile nav link is clicked", () => {
+    const { container } = render(<NavBar />);
+
+    const toggleButton = screen.getByRole("button", {
+      name: /toggle navigation menu/i,
+    });
+    const mobileMenu = container.querySelector(
+      "ul.absolute"
+    ) as HTMLUListElement;
+
+    fireEvent.click(toggleButton);
+    expect(toggleButton).toHaveAttribute("aria-expanded", "true");
+    expect(mobileMenu).toHaveClass("opacity-100");
+
+    const mobileAboutLink = Array.from(
+      mobileMenu.querySelectorAll("a")
+    ).find((link) => link.textContent === "About") as HTMLAnchorElement;
+
+    expect(mobileAboutLink).toBeDefined();
+
+    fireEvent.click(mobileAboutLink);
+
+    expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+    expect(mobileMenu).toHaveClass("opacity-0");
+    expect(mobileMenu).toHaveClass("pointer-events-none");
+  });
+
+  it("applies the underline-slide-out class to every nav link", () => {
+    render(<NavBar />);
+
+    const links = screen
+      .getAllByRole("link")
+      .filter((link) => link.getAttribute("href") !== "/");
+
+    expect(links.length).toBeGreaterThan(0);
+    links.forEach((link) =>
+      expect(link).toHaveClass("underline-slide-out")
+    );
   });
 });
