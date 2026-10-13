@@ -8,8 +8,6 @@ import StyledButton from "../StyledButton/StyledButton";
 
 const FullWidthImageSection = () => {
 
-  console.log(SectionBg)
-
   return (
     <GenericGrid as="section" className="items-center" >
       <div className="h-164 md:h-245 shadow-big-b col-span-4 overflow-hidden rounded-2xl object-cover md:col-span-12 md:rounded-none md:shadow-none">

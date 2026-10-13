@@ -1,6 +1,12 @@
 'use client'
 
-import { FaqSection, FullWidthImageSection, HomepageHero, PortfolioSection } from "./components";
+import {
+  BottomCta,
+  FaqSection,
+  FullWidthImageSection,
+  HomepageHero,
+  PortfolioSection
+} from "./components";
 
 export default function Home() {
   return (
@@ -9,6 +15,7 @@ export default function Home() {
       <PortfolioSection />
       <FullWidthImageSection />
       <FaqSection />
+      <BottomCta />
     </div>
   );
 }
