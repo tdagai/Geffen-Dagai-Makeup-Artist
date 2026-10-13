@@ -10,12 +10,12 @@ const Accordion = ({ className: classes = "" }: AccordionCompProps) => {
     {
       question: "What type of Makeup work do you do?",
       answer:
-        "My work spans commercials, film, TV, photography (editorial, commercial, and glam), corporate videos, and music videos. Basically, any type of shoot!"
+        "My work spans commercials, film, TV, photography, corporate videos, and music videos. Basically, any type of shoot!"
     },
     {
       question: "Where do you work?",
       answer:
-        "While I work the most frequently in Oakland and San Francisco, I am always willing to commute in and around the Bay Area. I've worked in San Jose and Palo Alto in the South Bay, Berkeley, Hayward, Fremont, Walnut Creek, and Pleasanton in the East Bay, San Mateo and Daly City in the Peninsula, and Marin and Mill Valley in the North Bay. I am also always open to traveling outside the Bay Area and have traveled to Stockton, Tracy, Santa Rosa, and Sacramento."
+        "While I work the most frequently in Oakland and San Francisco, I am always willing to commute in and around the Bay Area. I've worked in San Jose and Palo Alto in the South Bay, Berkeley, Hayward, Fremont, Walnut Creek, and Pleasanton in the East Bay, San Mateo and Daly City in the Peninsula, and Marin and Mill Valley in the North Bay. I am also always open to traveling outside the Bay Area and have traveled to Stockton, Tracy, Santa Rosa, Sacramento, and Los Angeles."
     },
     {
       question: "What are your rates?",
