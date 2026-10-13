@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Young_Serif, Instrument_Serif } from "next/font/google";
-import { NavBar } from "@components/index";
+import { NavBar, Footer } from "@components/index";
 import StyledComponentsRegistry from '../../lib/registry';
 import "./globals.css";
 
@@ -44,6 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <StyledComponentsRegistry>
           <NavBar />
           {children}
+          <Footer />
         </StyledComponentsRegistry>
       </body>
     </html>
