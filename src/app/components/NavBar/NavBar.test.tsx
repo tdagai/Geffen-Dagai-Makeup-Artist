@@ -154,4 +154,100 @@ describe("NavBar", () => {
       expect(link).toHaveClass("underline-slide-out")
     );
   });
+
+  it.each([
+    ["Portfolio"],
+    ["Resume"],
+    ["About"],
+    ["Contact"],
+  ])("closes the mobile menu when the mobile '%s' link is clicked", (label) => {
+    const { container } = render(<NavBar />);
+
+    const toggleButton = screen.getByRole("button", {
+      name: /toggle navigation menu/i,
+    });
+    const mobileMenu = container.querySelector(
+      "ul.absolute"
+    ) as HTMLUListElement;
+
+    fireEvent.click(toggleButton);
+    expect(toggleButton).toHaveAttribute("aria-expanded", "true");
+
+    const mobileLink = Array.from(mobileMenu.querySelectorAll("a")).find(
+      (link) => link.textContent === label
+    ) as HTMLAnchorElement;
+
+    expect(mobileLink).toBeDefined();
+
+    fireEvent.click(mobileLink);
+
+    expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+    expect(mobileMenu).toHaveClass("opacity-0");
+  });
+
+  it("does not toggle the mobile menu state when a desktop nav link is clicked", () => {
+    const { container } = render(<NavBar />);
+
+    const toggleButton = screen.getByRole("button", {
+      name: /toggle navigation menu/i,
+    });
+    const mobileMenu = container.querySelector(
+      "ul.absolute"
+    ) as HTMLUListElement;
+    const desktopMenu = container.querySelector(
+      "ul.hidden"
+    ) as HTMLUListElement;
+
+    const desktopPortfolioLink = Array.from(
+      desktopMenu.querySelectorAll("a")
+    ).find((link) => link.textContent === "Portfolio") as HTMLAnchorElement;
+
+    expect(desktopPortfolioLink).toBeDefined();
+
+    fireEvent.click(desktopPortfolioLink);
+
+    expect(toggleButton).toHaveAttribute("aria-expanded", "false");
+    expect(mobileMenu).toHaveClass("opacity-0");
+  });
+
+  it("supports multiple consecutive toggles of the hamburger menu", () => {
+    render(<NavBar />);
+
+    const toggleButton = screen.getByRole("button", {
+      name: /toggle navigation menu/i,
+    });
+
+    for (let i = 0; i < 4; i += 1) {
+      fireEvent.click(toggleButton);
+      expect(toggleButton).toHaveAttribute(
+        "aria-expanded",
+        i % 2 === 0 ? "true" : "false"
+      );
+    }
+  });
+
+  it("renders the logo image with eager loading", () => {
+    render(<NavBar />);
+
+    const logoImage = screen.getByAltText("website nav logo");
+    expect(logoImage).toHaveAttribute("loading", "eager");
+  });
+
+  it("renders the hamburger icon image with eager loading and expected height", () => {
+    render(<NavBar />);
+
+    const hamburgerImage = screen.getByAltText("hamburger menu icon");
+    expect(hamburgerImage).toHaveAttribute("loading", "eager");
+    expect(hamburgerImage).toHaveAttribute("height", "32");
+  });
+
+  it("renders exactly one toggle button for the hamburger menu", () => {
+    render(<NavBar />);
+
+    const toggleButtons = screen.getAllByRole("button", {
+      name: /toggle navigation menu/i,
+    });
+
+    expect(toggleButtons).toHaveLength(1);
+  });
 });

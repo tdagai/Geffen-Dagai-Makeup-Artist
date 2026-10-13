@@ -100,8 +100,8 @@ const QuestionContainer = styled.summary`
   color: var(--primary);
   cursor: pointer;
   transition:
-    background-color .5s,
-    color .5s;
+    background-color .25s,
+    color .25s;
 
   &:hover {
     background-color: var(--color-green-800);
