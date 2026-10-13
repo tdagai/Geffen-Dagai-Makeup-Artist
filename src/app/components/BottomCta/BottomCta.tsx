@@ -1,7 +1,6 @@
 "use client"
 
 import { StyledButton, GenericGrid } from "@components/index";
-// import Logo from "@assets/nav_logo.png";
 import Link from "next/link";
 
 const BottomCta = () => {
