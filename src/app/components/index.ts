@@ -8,3 +8,4 @@ export { default as FaqSection } from './FaqSection/FaqSection';
 export { default as Accordion } from './Accordion/Accordion';
 export { default as BottomCta } from './BottomCta/BottomCta';
 export { default as Footer } from './Footer/Footer';
+export { default as TestimonialsSection } from './TestimonialsSection/TestimonialsSection';
