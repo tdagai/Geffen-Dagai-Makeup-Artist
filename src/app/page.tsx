@@ -5,7 +5,8 @@ import {
   FaqSection,
   FullWidthImageSection,
   HomepageHero,
-  PortfolioSection
+  PortfolioSection,
+  TestimonialsSection,
 } from "./components";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
       <HomepageHero />
       <PortfolioSection />
       <FullWidthImageSection />
+      <TestimonialsSection />
       <FaqSection />
       <BottomCta />
     </div>

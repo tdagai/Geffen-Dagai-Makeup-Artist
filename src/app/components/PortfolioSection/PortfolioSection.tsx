@@ -61,11 +61,9 @@ const PortfolioSection = () => {
             )
           })}
         </div>
-        <Link href="/portfolio" className="mt-8 md:mt-10">
-          <StyledButton>
-            See My Portfolio Here →
-          </StyledButton>
-        </Link>
+        <StyledButton href="/portfolio" className="mt-8 md:mt-10">
+          See My Portfolio Here →
+        </StyledButton>
       </div>
     </GenericGrid>
   )

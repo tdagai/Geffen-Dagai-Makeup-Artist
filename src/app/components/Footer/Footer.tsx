@@ -85,8 +85,7 @@ const Footer = () => {
           src={FooterCat}
           alt="footer cat"
           loading="eager"
-          height={isMobile ? 86 : 195}
-          width={isMobile ? 60 : 137}
+          style={{ width: isMobile ? 60 : 137, height: isMobile ? 86 : 195 }}
         />
       </div>
     </GenericGrid>
