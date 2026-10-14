@@ -51,11 +51,11 @@ describe("PortfolioSection", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders the 'See My Portfolio Here' call to action button", () => {
+  it("renders the 'See My Portfolio Here' call to action link", () => {
     render(<PortfolioSection />);
 
     expect(
-      screen.getByRole("button", { name: /see my portfolio here →/i })
+      screen.getByRole("link", { name: /see my portfolio here →/i })
     ).toBeInTheDocument();
   });
 

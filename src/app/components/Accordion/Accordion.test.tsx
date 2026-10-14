@@ -2,28 +2,30 @@
 import React from "react";
 
 jest.mock("styled-components", () => {
-  const createStyledTag = (tag: string) => (...templateArgs: any[]) => {
-    void templateArgs;
-    const Component = React.forwardRef(({ children, ...props }: any, ref: any) =>
+  const makeComponent = (tag: any) => {
+    const Component: any = React.forwardRef(({ children, ...props }: any, ref: any) =>
       React.createElement(tag, { ...props, ref }, children)
     );
-    Component.displayName = `styled.${tag}`;
+    Component.displayName = typeof tag === "string" ? `styled.${tag}` : "styled(Component)";
     return Component;
   };
 
-  const styled: any = new Proxy(
-    (WrappedComponent: any) => (...templateArgs: any[]) => {
+  const createTemplateTag = (tag: any) => {
+    const templateTag: any = (...templateArgs: any[]) => {
       void templateArgs;
-      const Component = React.forwardRef(({ children, ...props }: any, ref: any) =>
-        React.createElement(WrappedComponent, { ...props, ref }, children)
-      );
-      Component.displayName = "styled(Component)";
-      return Component;
-    },
+      return makeComponent(tag);
+    };
+    templateTag.withConfig = () => createTemplateTag(tag);
+    templateTag.attrs = () => createTemplateTag(tag);
+    return templateTag;
+  };
+
+  const styled: any = new Proxy(
+    (WrappedComponent: any) => createTemplateTag(WrappedComponent),
     {
       get: (target, prop: string) => {
         if (typeof prop === "string") {
-          return createStyledTag(prop);
+          return createTemplateTag(prop);
         }
         return (target as any)[prop];
       },
