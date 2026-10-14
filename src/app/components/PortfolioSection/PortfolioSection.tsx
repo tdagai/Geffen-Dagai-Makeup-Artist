@@ -41,16 +41,18 @@ const PortfolioSection = () => {
     },
   ]
 
+  const liftTransition = "group-hover:shadow-small transition-all duration-300 ease-in-out group-hover:-translate-y-1";
+
   return (
     <GenericGrid as="section">
       <div className="bg-secondary shadow-big col-span-4 flex flex-col items-center gap-4 rounded-2xl p-8 md:col-span-10 md:col-start-2 md:gap-6 md:p-10">
         <h2 className="font-young text-primary text-center">My Work Speaks For Itself</h2>
-        <div className="flex w-full flex-col-reverse items-center justify-evenly gap-4 md:flex-row">
+        <div className={`flex w-full flex-col-reverse items-center justify-evenly gap-4 md:flex-row`}>
           {itemsList.map(({ text, imageSrc, alt, href }) => {
             return (
-              <Link href={href} key={text}>
+              <Link href={href} key={text} className="group">
                 <h3 className="font-young text-primary text-center underline">{text}</h3>
-                <div className="max-w-75 max-h-100 overflow-hidden rounded-2xl border border-black">
+                <div className={`max-w-75 max-h-100 overflow-hidden rounded-2xl border border-black shadow-none ${liftTransition}`}>
                   <Image
                     src={imageSrc}
                     alt={alt}
