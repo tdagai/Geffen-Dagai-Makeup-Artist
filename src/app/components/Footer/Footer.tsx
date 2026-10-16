@@ -18,7 +18,7 @@ interface LinksSectionProps {
 
 const LinksSection = ({ linksList }: LinksSectionProps) => {
   return (
-    <ul className="divide-primary divide-x-3 flex justify-center gap-3 pl-3 md:gap-6 md:pl-6">
+    <ul className="divide-primary divide-x-3 flex flex-wrap justify-center gap-3 pl-3 md:gap-6 md:pl-6">
       {linksList.map(({ label, link }) => {
         return (
           <li key={label} className="font-instrument text-md flex items-center gap-3 pr-3 md:gap-6 md:pr-6 md:text-2xl">
@@ -67,7 +67,7 @@ const Footer = () => {
 
   return (
     <GenericGrid as="section" className="md:mt-31 relative mt-20 max-w-full">
-      <div className="bg-secondary relative col-span-4 col-start-1 grid grid-rows-2 pt-9 md:col-span-12 md:py-6">
+      <div className="bg-secondary relative col-span-4 col-start-1 grid grid-rows-2 pt-9 md:col-span-12 md:pt-6">
         <div className="row-span-1 row-start-1 flex justify-center">
           <Image
             src={Logo}
@@ -76,7 +76,7 @@ const Footer = () => {
             className="w-64.5 md:w-82.5"
           />
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex flex-wrap items-center justify-center">
           <LinksSection linksList={footerLinks} />
         </div>
       </div>

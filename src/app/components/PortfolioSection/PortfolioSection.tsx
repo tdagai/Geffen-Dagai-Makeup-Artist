@@ -7,6 +7,8 @@ import CommercialThumbnail from "@assets/homepage/portfolio/commercial.jpg"
 import Image, { StaticImageData } from "next/image";
 import StyledButton from "../StyledButton/StyledButton";
 import Link from "next/link";
+import { liftTransition } from "@constants";
+
 
 interface PortfolioSectionItemProps {
   text: string;
@@ -25,23 +27,21 @@ const PortfolioSection = () => {
       text: "Film",
       imageSrc: FilmThumbnail,
       alt: "Portfolio Film Thumbnail",
-      href: "/portfolio"
+      href: "/portfolio#Film"
     },
     {
       text: "Commercial",
       imageSrc: CommercialThumbnail,
       alt: "Portfolio Commercial Thumbnail",
-      href: "/portfolio"
+      href: "/portfolio#Commercial"
     },
     {
       text: "Photography",
       imageSrc: PhotographyThumbnail,
       alt: "Portfolio Photography Thumbnail",
-      href: "/portfolio"
+      href: "/portfolio#Photography"
     },
   ]
-
-  const liftTransition = "group-hover:shadow-small transition-all duration-300 ease-in-out group-hover:-translate-y-1";
 
   return (
     <GenericGrid as="section">
