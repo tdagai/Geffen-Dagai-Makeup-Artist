@@ -67,7 +67,7 @@ const Footer = () => {
 
   return (
     <GenericGrid as="section" className="md:mt-31 relative mt-20 max-w-full">
-      <div className="bg-secondary relative col-span-4 col-start-1 grid grid-rows-2 pt-9 md:col-span-12 md:py-6">
+      <div className="bg-secondary relative col-span-4 col-start-1 grid grid-rows-2 pt-9 md:col-span-12 md:pt-6">
         <div className="row-span-1 row-start-1 flex justify-center">
           <Image
             src={Logo}
