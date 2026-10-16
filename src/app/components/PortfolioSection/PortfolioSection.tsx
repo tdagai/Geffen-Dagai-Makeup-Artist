@@ -27,19 +27,19 @@ const PortfolioSection = () => {
       text: "Film",
       imageSrc: FilmThumbnail,
       alt: "Portfolio Film Thumbnail",
-      href: "/portfolio"
+      href: "/portfolio#Film"
     },
     {
       text: "Commercial",
       imageSrc: CommercialThumbnail,
       alt: "Portfolio Commercial Thumbnail",
-      href: "/portfolio"
+      href: "/portfolio#Commercial"
     },
     {
       text: "Photography",
       imageSrc: PhotographyThumbnail,
       alt: "Portfolio Photography Thumbnail",
-      href: "/portfolio"
+      href: "/portfolio#Photography"
     },
   ]
 

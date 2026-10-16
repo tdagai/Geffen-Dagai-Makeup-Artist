@@ -20,7 +20,7 @@ const PortfolioPage = () => {
             <section id={sectionTitle} key={`${sectionTitle}`} className="col-span-4 col-start-1 px-4 md:col-span-10 md:col-start-2 md:px-0">
               <h3 className='font-young text-primary border-primary border-b-8'>{sectionTitle}</h3>
               <MasonryGrid
-                className="container col-span-4 col-start-1 p-4 md:col-span-12 md:col-start-2"
+                className="container col-span-4 col-start-1 mx-auto my-0 px-4 pb-20 pt-4 md:col-span-12 md:col-start-2"
                 gap={24}
                 frameWidth={isMobile ? 150 : 300}
                 style={{ width: `${100}%` }}

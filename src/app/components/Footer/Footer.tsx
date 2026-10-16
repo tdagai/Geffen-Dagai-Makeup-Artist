@@ -18,7 +18,7 @@ interface LinksSectionProps {
 
 const LinksSection = ({ linksList }: LinksSectionProps) => {
   return (
-    <ul className="divide-primary divide-x-3 flex justify-center gap-3 pl-3 md:gap-6 md:pl-6">
+    <ul className="divide-primary divide-x-3 flex flex-wrap justify-center gap-3 pl-3 md:gap-6 md:pl-6">
       {linksList.map(({ label, link }) => {
         return (
           <li key={label} className="font-instrument text-md flex items-center gap-3 pr-3 md:gap-6 md:pr-6 md:text-2xl">
@@ -76,7 +76,7 @@ const Footer = () => {
             className="w-64.5 md:w-82.5"
           />
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex flex-wrap items-center justify-center">
           <LinksSection linksList={footerLinks} />
         </div>
       </div>

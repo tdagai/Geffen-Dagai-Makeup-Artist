@@ -22,9 +22,9 @@
   --font-mono:                var(--font-geist-mono);
   --font-young:               var(--font-young-serif);
   --font-instrument:          var(--font-instrument-serif);
-  --shadow-small:             4px 4px 1px 0px var(--color-primary);
-  --shadow-big:               8px 8px 1px 0px var(--color-primary);
-  --shadow-big-b:             0px 8px 1px 0px var(--color-primary);
+  --shadow-small:             4px 4px 0px 0px var(--color-primary);
+  --shadow-big:               8px 8px 0px 0px var(--color-primary);
+  --shadow-big-b:             0px 8px 0px 0px var(--color-primary);
 }
 
 
