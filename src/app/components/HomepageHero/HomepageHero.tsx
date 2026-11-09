@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const HomepageHero = () => {
   return (
-    <GenericGrid as="section" className="md:mt-24">
+    <GenericGrid as="section" className="md:mt-12">
       <div className="mt-8 flex flex-col items-center justify-center gap-8 px-8 text-center sm:col-start-1 sm:col-end-5 sm:row-start-2 md:col-start-2 md:col-end-7 md:row-start-1 md:mt-0 md:items-start md:px-0 md:text-start">
         <h1 className="text-primary font-young">
           A Versatile Artist For All Your Makeup Needs

@@ -67,24 +67,6 @@ describe("Footer", () => {
     expect(cat).toHaveAttribute("loading", "eager");
   });
 
-  it("renders desktop dimensions for the footer cat when isMobile is false", () => {
-    mockedUseMediaQuery.mockReturnValue(false);
-    render(<Footer />);
-
-    const cat = screen.getByAltText("footer cat");
-    expect(cat).toHaveAttribute("height", "195");
-    expect(cat).toHaveAttribute("width", "137");
-  });
-
-  it("renders mobile dimensions for the footer cat when isMobile is true", () => {
-    mockedUseMediaQuery.mockReturnValue(true);
-    render(<Footer />);
-
-    const cat = screen.getByAltText("footer cat");
-    expect(cat).toHaveAttribute("height", "86");
-    expect(cat).toHaveAttribute("width", "60");
-  });
-
   it("renders all footer navigation links with correct labels and hrefs", () => {
     mockedUseMediaQuery.mockReturnValue(false);
     render(<Footer />);

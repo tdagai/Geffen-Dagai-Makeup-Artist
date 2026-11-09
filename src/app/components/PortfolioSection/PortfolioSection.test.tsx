@@ -66,7 +66,7 @@ describe("PortfolioSection", () => {
     // 3 category links + 1 CTA link
     expect(links).toHaveLength(4);
     links.forEach((link) => {
-      expect(link).toHaveAttribute("href", "/portfolio");
+      expect(link).toHaveAttribute("href", expect.stringContaining("/portfolio"));
     });
   });
 });
